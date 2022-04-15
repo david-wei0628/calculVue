@@ -2,29 +2,57 @@
     data() {
         return {
             sum: 0,
-            tempvar:0
+            tempvar: 0
         }
     },
     methods: {
         plus: function () {
-            this.tempvar = this.tempvar + this.sum;
-            this.sum = 0;
+            //if (this.tempvar == 0) {
+            //    this.tempvar = this.sum;
+            //}
+            //else {
+            //    this.tempvar = this.tempvar + this.sum;
+            //}
+            //this.sum = 0;
         },
         sub: function () {
-            this.tempvar = this.tempvar - this.sum;
+            if (this.tempvar == 0) {
+                this.tempvar = this.sum;
+            }
+            else {
+                this.tempvar = this.tempvar - this.sum;
+            }
             this.sum = 0;
         },
         mul: function () {
-            this.tempvar = this.tempvar * this.sum;
+            if (this.tempvar == 0) {
+                this.tempvar = this.sum;
+            }
+            else {
+                this.tempvar = this.tempvar * this.sum;
+            }
             this.sum = 0;
         },
         div: function () {
-            this.tempvar = this.tempvar / this.sum;
+            if (this.tempvar == 0) {
+                this.tempvar = this.sum;
+            }
+            else {
+                this.tempvar = this.tempvar / this.sum;
+            }
             this.sum = 0;
         },
         equ: function () {
             this.sum = this.tempvar;
             this.tempvar = 0;
+        },
+        inputnumber: function (num) {
+            if (this.sum == 0) {
+                this.sum = num;
+            }
+            else {
+                this.sum = this.sum + num;
+            }
         }
 
     }
