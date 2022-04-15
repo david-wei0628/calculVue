@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Calcul";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Vue計算機</h1>
+</div>
+
+<div id="app">
+	<div class="textcss">
+		{{ sum }}
+	</div>
+	<br />
+	<br />
+	<h2>
+		<button v-on:click="plus">+</button>
+		<button v-on:click="sub">-</button>
+		<button v-on:click="mul">*</button>
+		<button v-on:click="div">/</button>
+	</h2>
+    <h2>
+		<button v-on:click="sum = sum + '7'"> 7 </button>
+		<button v-on:click="sum = sum + '8'"> 8 </button>
+		<button v-on:click="sum = sum + '9'"> 9 </button>
+    </h2>
+	<h2>
+		<button v-on:click="sum = sum + '4'"> 4 </button>
+		<button v-on:click="sum = sum + '5'"> 5 </button>
+		<button v-on:click="sum = sum + '6'"> 6 </button>
+    </h2>
+	<h2>
+		<button v-on:click="sum = sum + '1'"> 1 </button>
+		<button v-on:click="sum = sum + '2'"> 2 </button>
+		<button v-on:click="sum = sum + '3'"> 3 </button>
+    </h2>
+	<h2>
+		<button v-on:click="sum=sum +'0'">0</button>
+		<button v-on:click="sum=sum +'.'">.</button>
+		<button v-on:click="sum='0'">C</button>
+	</h2>
+	<h2>
+		<button v-on:click="equ">=</button>
+	</h2>
+</div>
