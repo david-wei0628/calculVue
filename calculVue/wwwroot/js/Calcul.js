@@ -2,7 +2,9 @@
     data() {
         return {
             sum: 0,
-            tempvar: 0
+            tempvar: 0,
+            equbool: false,
+            decpoint: true
         }
     },
     methods: {
@@ -45,10 +47,17 @@
         equ: function () {
             this.sum = this.tempvar;
             this.tempvar = 0;
+            this.equbool = true;
         },
         inputnumber: function (num) {
-            if (this.sum == 0) {
+            //if (num == '.' && decpoint) {
+            //    this.sum = this.sum + num;
+            //    decpoint = false;
+            //}
+            //else 
+            if (this.sum == 0 || this.equbool) {
                 this.sum = num;
+                this.equbool = false;
             }
             else {
                 this.sum = this.sum + num;
