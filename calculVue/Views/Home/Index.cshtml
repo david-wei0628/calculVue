@@ -8,7 +8,7 @@
 
 <div id="app">
 	<div class="textcss">
-		{{tempvar}}<br/>{{sum }}
+		{{tempvar}}<br/>{{symbol}}<br/>{{sum}}
 	</div>
 	<br />
 	<br />
@@ -36,7 +36,7 @@
 	<h2>
 		<button v-on:click="inputnumber('0')">0</button>
 		<button v-on:click="numberdec('.')">.</button>
-		<button v-on:click="sum='0' , tempvar='0'">C</button>
+		<button v-on:click="reset">C</button>
 	</h2>
 	<h2>
 		<button v-on:click="equ">=</button>

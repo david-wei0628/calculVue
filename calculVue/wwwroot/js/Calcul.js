@@ -3,54 +3,81 @@
         return {
             sum: 0,
             tempvar: 0,
+            symbol: ' ',
             equbool: false,
-            decpoint: true
+            decpoint: false
         }
     },
     methods: {
         plus: function () {
-            if (this.tempvar == 0) {
+            if (this.tempvar == 0 && this.symbol == ' ') {
                 this.tempvar = this.sum;
             }
             else {
-                this.tempvar = parseInt(this.tempvar) + parseInt(this.sum);
+                this.overlay(this.tempvar, this.sum, this.symbol);
             }
+            this.symbol = '+';
             this.sum = 0;
+            this.decpoint = false;
         },
         sub: function () {
-            if (this.tempvar == 0) {
+            if (this.tempvar == 0 && this.symbol == ' ') {
                 this.tempvar = this.sum;
             }
             else {
-                this.tempvar = this.tempvar - this.sum;
+                this.overlay(this.tempvar, this.sum, this.symbol);
             }
+            this.symbol = '-';
             this.sum = 0;
+            this.decpoint = false;
         },
         mul: function () {
-            if (this.tempvar == 0) {
+            if (this.tempvar == 0 && this.symbol == ' ') {
                 this.tempvar = this.sum;
             }
             else {
-                this.tempvar = this.tempvar * this.sum;
+                this.overlay(this.tempvar, this.sum, this.symbol);
             }
+            this.symbol = '*';
             this.sum = 0;
+            this.decpoint = false;
         },
         div: function () {
-            if (this.tempvar == 0) {
+            if (this.tempvar == 0 && this.symbol == ' ') {
                 this.tempvar = this.sum;
             }
             else {
-                this.tempvar = this.tempvar / this.sum;
+                this.overlay(this.tempvar, this.sum, this.symbol);
             }
+            this.symbol = '/';
             this.sum = 0;
+            this.decpoint = false;
         },
         equ: function () {
-            this.sum = this.tempvar;
-            this.tempvar = 0;
+            this.overlay(this.tempvar, this.sum, this.symbol);
+            this.sum = 0;
+            this.symbol == ' ';
             this.equbool = true;
+            this.decpoint = false;
+        },
+        overlay: function (tempvar, sum, operator) {
+            switch (operator) {
+                case '+':
+                    this.tempvar = tempvar + sum;
+                    break;
+                case '-':
+                    this.tempvar = tempvar - sum;
+                    break;
+                case '*':
+                    this.tempvar = tempvar * sum;
+                    break;
+                case '/':
+                    this.tempvar = tempvar / sum;
+                    break;
+            }
         },
         inputnumber: function (num) {
-            if (this.sum == 0 || this.equbool) {
+            if ((this.sum == 0 || this.equbool) && !this.decpoint) {
                 this.sum = num;
                 this.equbool = false;
             }
@@ -59,12 +86,18 @@
             }
         },
         numberdec: function (poin) {
-            if (decpoint) {
+            if (!this.decpoint) {
                 this.sum = this.sum + poin;
-                decpoint = false;
+                this.decpoint = true;
             }
+        },
+        reset: function () {
+            this.sum = 0;
+            this.tempvar = 0;
+            this.symbol = ' ';
+            this.equbool = false;
+            this.decpoint = false;
         }
-
     }
 });
 

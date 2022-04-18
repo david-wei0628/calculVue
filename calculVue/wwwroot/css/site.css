@@ -18,10 +18,10 @@ body {
 }
 
 button {
-    background-color: #000000; /* Green */
+    background-color: #000000;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 40px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -36,12 +36,13 @@ h2 {
 }
 
 .textcss {
-    display: flex;
+    display: fixed;
     justify-content: center;
-    font-size: 45px;
     align-items: center;
+    font-size: 45px;
     text-align: right;
-    border: 2px black solid;
+    width: 65%;
+    /*border: 2px black solid;*/
 }
 
 .Labcss {
