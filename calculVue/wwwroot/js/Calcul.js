@@ -1,98 +1,106 @@
 ﻿const vm = Vue.createApp({
     data() {
         return {
-            sum: 0,
+            Inputnum: 0,
             tempvar: 0,
             symbol: ' ',
             equbool: false,
-            decpoint: false
+            decpoint: false,
+            decnum: 0
         }
     },
     methods: {
-        plus: function () {
+        add: function () {
             if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.sum;
+                this.tempvar = this.Inputnum;
             }
             else {
-                this.overlay(this.tempvar, this.sum, this.symbol);
+                this.overlay(this.tempvar, this.Inputnum, this.symbol);
             }
             this.symbol = '+';
-            this.sum = 0;
-            this.decpoint = false;
+            this.nextnum();
         },
         sub: function () {
             if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.sum;
+                this.tempvar = this.Inputnum;
             }
             else {
-                this.overlay(this.tempvar, this.sum, this.symbol);
+                this.overlay(this.tempvar, this.Inputnum, this.symbol);
             }
             this.symbol = '-';
-            this.sum = 0;
-            this.decpoint = false;
+            this.nextnum();
         },
         mul: function () {
             if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.sum;
+                this.tempvar = this.Inputnum;
             }
             else {
-                this.overlay(this.tempvar, this.sum, this.symbol);
+                this.overlay(this.tempvar, this.Inputnum, this.symbol);
             }
             this.symbol = '*';
-            this.sum = 0;
-            this.decpoint = false;
+            this.nextnum();
         },
         div: function () {
             if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.sum;
+                this.tempvar = this.Inputnum;
             }
             else {
-                this.overlay(this.tempvar, this.sum, this.symbol);
+                this.overlay(this.tempvar, this.Inputnum, this.symbol);
             }
             this.symbol = '/';
-            this.sum = 0;
-            this.decpoint = false;
+            this.nextnum();
         },
         equ: function () {
-            this.overlay(this.tempvar, this.sum, this.symbol);
-            this.sum = 0;
-            this.symbol == ' ';
+            this.overlay(this.tempvar, this.Inputnum, this.symbol);
+            this.Inputnum = 0;
+            this.decnum = 0;
+            this.symbol = ' ';
             this.equbool = true;
             this.decpoint = false;
         },
         overlay: function (tempvar, sum, operator) {
+            tempvar = parseFloat(tempvar);
+            sum = parseFloat(sum);
             switch (operator) {
                 case '+':
-                    this.tempvar = tempvar + sum;
+                    this.tempvar = (tempvar + sum).toFixed(this.decnum);
                     break;
                 case '-':
-                    this.tempvar = tempvar - sum;
+                    this.tempvar = (tempvar - sum).toFixed(this.decnum);
                     break;
                 case '*':
-                    this.tempvar = tempvar * sum;
+                    this.tempvar = (tempvar * sum).toFixed(this.decnum);
                     break;
                 case '/':
-                    this.tempvar = tempvar / sum;
+                    this.tempvar = (tempvar / sum).toFixed(this.decnum);
                     break;
             }
         },
         inputnumber: function (num) {
-            if ((this.sum == 0 || this.equbool) && !this.decpoint) {
-                this.sum = num;
+            if ((this.Inputnum == 0 || this.equbool) && !this.decpoint) {
+                this.Inputnum = num;
                 this.equbool = false;
             }
             else {
-                this.sum = this.sum + num;
+                this.Inputnum = this.Inputnum + num;
+                if (this.decpoint) {
+                    this.decnum++;
+                }
             }
         },
         numberdec: function (poin) {
             if (!this.decpoint) {
-                this.sum = this.sum + poin;
+                this.Inputnum = this.Inputnum + poin;
                 this.decpoint = true;
             }
         },
+        nextnum: function () {
+            this.Inputnum = 0;
+            this.decpoint = false;
+            this.decnum = 0;
+        },
         reset: function () {
-            this.sum = 0;
+            this.Inputnum = 0;
             this.tempvar = 0;
             this.symbol = ' ';
             this.equbool = false;
