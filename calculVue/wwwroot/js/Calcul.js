@@ -11,42 +11,22 @@
     },
     methods: {
         add: function () {
-            if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.Inputnum;
-            }
-            else {
-                this.overlay(this.tempvar, this.Inputnum, this.symbol);
-            }
+            this.operalogic();
             this.symbol = '+';
             this.nextnum();
         },
         sub: function () {
-            if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.Inputnum;
-            }
-            else {
-                this.overlay(this.tempvar, this.Inputnum, this.symbol);
-            }
+            this.operalogic();
             this.symbol = '-';
             this.nextnum();
         },
         mul: function () {
-            if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.Inputnum;
-            }
-            else {
-                this.overlay(this.tempvar, this.Inputnum, this.symbol);
-            }
+            this.operalogic();
             this.symbol = '*';
             this.nextnum();
         },
         div: function () {
-            if (this.tempvar == 0 && this.symbol == ' ') {
-                this.tempvar = this.Inputnum;
-            }
-            else {
-                this.overlay(this.tempvar, this.Inputnum, this.symbol);
-            }
+            this.operalogic();
             this.symbol = '/';
             this.nextnum();
         },
@@ -86,6 +66,14 @@
                 if (this.decpoint) {
                     this.decnum++;
                 }
+            }
+        },
+        operalogic: function () {
+            if (this.tempvar == 0 && this.symbol == ' ') {
+                this.tempvar = this.Inputnum;
+            }
+            else {
+                this.overlay(this.tempvar, this.Inputnum, this.symbol);
             }
         },
         numberdec: function (poin) {
