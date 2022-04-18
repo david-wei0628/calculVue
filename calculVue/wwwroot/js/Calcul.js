@@ -9,13 +9,13 @@
     },
     methods: {
         plus: function () {
-            //if (this.tempvar == 0) {
-            //    this.tempvar = this.sum;
-            //}
-            //else {
-            //    this.tempvar = this.tempvar + this.sum;
-            //}
-            //this.sum = 0;
+            if (this.tempvar == 0) {
+                this.tempvar = this.sum;
+            }
+            else {
+                this.tempvar = parseInt(this.tempvar) + parseInt(this.sum);
+            }
+            this.sum = 0;
         },
         sub: function () {
             if (this.tempvar == 0) {
@@ -50,17 +50,18 @@
             this.equbool = true;
         },
         inputnumber: function (num) {
-            //if (num == '.' && decpoint) {
-            //    this.sum = this.sum + num;
-            //    decpoint = false;
-            //}
-            //else 
             if (this.sum == 0 || this.equbool) {
                 this.sum = num;
                 this.equbool = false;
             }
             else {
                 this.sum = this.sum + num;
+            }
+        },
+        numberdec: function (poin) {
+            if (decpoint) {
+                this.sum = this.sum + poin;
+                decpoint = false;
             }
         }
 
