@@ -2,7 +2,7 @@
     data() {
         return {
             Inputnum: 0,
-            tempvar: 0,
+            tempvar: ' ',
             symbol: ' ',
             equbool: false,
             decpoint: false,
@@ -11,22 +11,30 @@
     },
     methods: {
         add: function () {
-            this.operalogic();
+            if (!this.equbool) {
+                this.operalogic();
+            }
             this.symbol = '+';
             this.nextnum();
         },
         sub: function () {
-            this.operalogic();
+            if (!this.equbool) {
+                this.operalogic();
+            }
             this.symbol = '-';
             this.nextnum();
         },
         mul: function () {
-            this.operalogic();
+            if (!this.equbool) {
+                this.operalogic();
+            }
             this.symbol = '*';
             this.nextnum();
         },
         div: function () {
-            this.operalogic();
+            if (!this.equbool) {
+                this.operalogic();
+            }
             this.symbol = '/';
             this.nextnum();
         },
@@ -59,6 +67,9 @@
         inputnumber: function (num) {
             if ((this.Inputnum == 0 || this.equbool) && !this.decpoint) {
                 this.Inputnum = num;
+                if (this.equbool) {
+                    this.tempvar = 0;
+                }
                 this.equbool = false;
             }
             else {
@@ -85,11 +96,11 @@
         nextnum: function () {
             this.Inputnum = 0;
             this.decpoint = false;
-            this.decnum = 0;
         },
         reset: function () {
             this.Inputnum = 0;
-            this.tempvar = 0;
+            this.tempvar = ' ';
+            this.decnum = 0;
             this.symbol = ' ';
             this.equbool = false;
             this.decpoint = false;
