@@ -80,7 +80,11 @@
             }
         },
         operalogic: function () {
-            if (this.tempvar == 0 && this.symbol == ' ') {
+            //if (this.tempvar == 0 && this.symbol == ' ') {
+            //    this.tempvar = this.Inputnum;
+            //}
+            //else
+            if (this.tempvar == 0) {
                 this.tempvar = this.Inputnum;
             }
             else {
