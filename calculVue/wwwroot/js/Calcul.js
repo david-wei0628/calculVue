@@ -9,6 +9,14 @@
             decnum: 0
         }
     },
+    mounted() {
+        document.onkeydown = function (event) {
+            let key = window.event.keyCode;
+            if (key) {
+                console.log(key);
+            }
+        }
+    },
     methods: {
         add: function () {
             if (!this.equbool) {
